@@ -3,8 +3,15 @@ var express = require('express')
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+app.get(`/`, (req, res) => {
+  console.log("entra a la barra /")
+  return res.json({ message: `API DEPLOY SUCCESS` });
+});
+
 app.get("/test", function (request, response) {
+  console.log("entra a la barra /test")
   response.send('Prueba Local WhatsApp Webhook ');
 });
 
