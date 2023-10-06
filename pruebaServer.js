@@ -48,7 +48,7 @@ app.post("/webhook", function (request, response) {
 //   console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
 //   console.log(" ")
 // }else{
-  console.log('Incoming webhook: ' + JSON.stringify(request));
+  console.log('Incoming webhook: ' + JSON.stringify(request.body));
   console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
   console.log(" ")
 // }
