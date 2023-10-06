@@ -39,7 +39,7 @@ app.post("/webhook", function (request, response) {
   contacto = JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name);
   numero = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from);
   mensaje = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body);
- console.log(res.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
+ console.log(response.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
  console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
  console.log(" ")
   // console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
