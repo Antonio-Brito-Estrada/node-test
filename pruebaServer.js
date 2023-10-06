@@ -40,18 +40,18 @@ app.post("/webhook", function (request, response) {
 //   numero = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from);
 //   mensaje = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body);
 //  console.log(response.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
-if(request.body){
-  console.log(" ")
-  console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
-  console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
-  console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
-  console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
-  console.log(" ")
-}else{
+// if(request.body){
+//   console.log(" ")
+//   console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
+//   console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
+//   console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+//   console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
+//   console.log(" ")
+// }else{
   console.log('Incoming webhook: ' + JSON.stringify(request));
   console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
   console.log(" ")
-}
+// }
   // console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
   // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
   // console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
