@@ -35,16 +35,16 @@ app.get('/webhook', function(req, res) {
 });
 
 app.post("/webhook", function (request, response) {
-  let contacto="", numero="", mensaje="";
-  contacto = JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name);
-  numero = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from);
-  mensaje = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body);
- console.log(response.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
- console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
- console.log(" ")
-  // console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
-  // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
-  // console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+//   let contacto="", numero="", mensaje="";
+//   contacto = JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name);
+//   numero = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from);
+//   mensaje = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body);
+//  console.log(response.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
+  console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
+  console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
+  console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+  console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
+  console.log(" ")
   // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   response.sendStatus(200);
 });
