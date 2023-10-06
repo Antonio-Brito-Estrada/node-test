@@ -13,12 +13,12 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get(`/`, (req, res) => {
-  console.log("entra a la barra /")
+  // console.log("entra a la barra /")
   return res.json({ message: `API DEPLOY SUCCESS` });
 });
 
 app.get("/test", function (request, response) {
-  console.log("entra a la barra /test")
+  // console.log("entra a la barra /test")
   response.send('Prueba Local WhatsApp Webhook ');
 });
 
@@ -35,9 +35,16 @@ app.get('/webhook', function(req, res) {
 });
 
 app.post("/webhook", function (request, response) {
-  console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
-  console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
-  console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+  let contacto="", numero="", mensaje="";
+  contacto = JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name);
+  numero = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from);
+  mensaje = JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body);
+ console.log(res.json({ descripcionContacto: contacto, NumTelefono: numero, mensajeTexto: mensaje }))
+ console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
+ console.log(" ")
+  // console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
+  // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
+  // console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
   // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   response.sendStatus(200);
 });
