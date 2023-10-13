@@ -49,7 +49,13 @@ app.post("/webhook", function (request, response) {
 // }else{
   // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   console.log(" ")
-  console.log('Incoming webhook: ' + JSON.stringify(request.body.entry[0].changes[0].value));
+  if(request.body.entry[0].changes[0].value.statuses){
+    console.log('Incoming webhook: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses));
+  }else{
+  console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
+  console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
+  console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+  }
   console.log("<<<<<<<<<<<<<Notificacion>>>>>>>>>>>>>>")
   console.log(" ")
   
