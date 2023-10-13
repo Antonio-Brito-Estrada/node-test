@@ -1,5 +1,4 @@
 
-// import { config } from 'dotenv';
 var express = require('express')
     ,bodyParser = require('body-parser');
     const cors = require("cors");
@@ -48,9 +47,12 @@ app.post("/webhook", function (request, response) {
 //   console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
 //   console.log(" ")
 // }else{
-  console.log('Incoming webhook: ' + JSON.stringify(request.body));
-  console.log("<<<<<<<<<<<<<MENSAJE RECIBIDO>>>>>>>>>>>>>>")
+  // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   console.log(" ")
+  console.log('Incoming webhook: ' + JSON.stringify(request.body.entry[0].changes[0].value));
+  console.log("<<<<<<<<<<<<<Notificacion>>>>>>>>>>>>>>")
+  console.log(" ")
+  
 // }
   // console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
   // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
