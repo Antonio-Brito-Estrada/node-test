@@ -53,15 +53,15 @@ app.post("/webhook", function (request, response) {
     console.log('Incoming webhook: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses));
     // Insertar en collecion de statusMensaje
   }else{
+    console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
+    console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].wa_id))
     if(request.body.entry[0].changes[0].value.messages[0].type === "text"){
-      console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
-      console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
+      // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
       console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
     }else{
-      console.log('contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0]))
+      // console.log('contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0]))
       console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0]))
     }
-
   // Insertar en collecion de mensaje
   }
   console.log("<<<<<<<<<<<<<Notificacion>>>>>>>>>>>>>>")
