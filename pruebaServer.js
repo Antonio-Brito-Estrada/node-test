@@ -52,6 +52,7 @@ app.post("/webhook", function (request, response) {
   if(request.body.entry[0].changes[0].value.statuses){
     console.log('Estatus: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses[0].status));
     console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses[0].recipient_id));
+    console.log('idMensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses[0].id));
     // Insertar en collecion de statusMensaje
   }else{
     console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
@@ -59,9 +60,13 @@ app.post("/webhook", function (request, response) {
     if(request.body.entry[0].changes[0].value.messages[0].type === "text"){
       // console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].from))
       console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].text.body))
+      console.log('idMensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].id))
     }else{
       // console.log('contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0]))
-      console.log('Mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0]))
+      console.log('idMensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].id))
+      console.log('Tipo mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].type))
+      console.log('Extension: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.mime_type))
+      console.log('idDescarga: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.id))
     }
   // Insertar en collecion de mensaje
   }
