@@ -65,8 +65,15 @@ app.post("/webhook", function (request, response) {
       // console.log('contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0]))
       console.log('idMensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].id))
       console.log('Tipo mensaje: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].type))
-      console.log('Extension: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.mime_type))
-      console.log('idDescarga: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.id))
+      if(request.body.entry[0].changes[0].value.messages[0].type === "image"){
+        console.log('Extension: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.mime_type))
+        console.log('idDescarga: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].image.id))
+      }else{
+        console.log('Nombre archivo: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].document.filename))
+        console.log('Extension: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].document.mime_type))
+        console.log('idDescarga: ' + JSON.stringify(request.body.entry[0].changes[0].value.messages[0].document.id))
+      }
+
     }
   // Insertar en collecion de mensaje
   }
