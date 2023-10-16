@@ -50,7 +50,8 @@ app.post("/webhook", function (request, response) {
   // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   console.log(" ")
   if(request.body.entry[0].changes[0].value.statuses){
-    console.log('Incoming webhook: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses));
+    console.log('Estatus: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses[0].status));
+    console.log('Numero: ' + JSON.stringify(request.body.entry[0].changes[0].value.statuses[0].recipient_id));
     // Insertar en collecion de statusMensaje
   }else{
     console.log('Descripcion contacto: ' + JSON.stringify(request.body.entry[0].changes[0].value.contacts[0].profile.name))
