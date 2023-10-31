@@ -22,7 +22,7 @@ app.get("/test", function (request, response) {
 });
 
 app.get('/webhook', function(req, res) {
-  console.log("req:"+req)
+  console.log("req:"+JSON.stringify(req))
   if (
     req.query['hub.mode'] == 'subscribe' &&
     req.query['hub.verify_token'] == 'pruebaHDE'
