@@ -83,17 +83,18 @@ app.post("/webhook", function (request, response) {
 // prueba enviar mensaje
 app.get('/enviarMensaje', function(req, res) {
 console.log("Entra:::")
-var data = JSON.stringify({
-      "messaging_product": "whatsapp",
-      "to": "523515194726",
-      "type": "template",
-      "template": {
-        "name": "hello_world",
-        "language": {
-          "code": "en_US"
-        }
-      }
-    });
+var data = JSON.stringify(
+  { 
+    "messaging_product": "whatsapp",
+    "recipient_type":"individual",
+    "to": "523515194726",
+    "type": "text",
+    "text":{
+       "preview_url":false,
+       "body": "Prueba desde el servidor web"
+    }
+   }
+    );
     
     var config = {
       method: 'post',
@@ -117,6 +118,32 @@ axios(config)
 console.log("Sale:::")
 });
 
+// prueba enviar mensaje
+app.post('/sendMessage', function(req, res) {
+  console.log("Entra:::")
+  var data = JSON.stringify(req);
+      
+      var config = {
+        method: 'post',
+        url: 'https://graph.facebook.com/v17.0/125943953940927/messages',
+        headers: { 
+          'Content-Type': 'application/json', 
+          'Authorization': 'Bearer EAAMCICOkXOQBO6nKOpJHoXDOFtrzaAZC6H2lBVR97tqtVOthYVP1Kw5wHtZBODoX7QEW4vwcVuoP81R64Jeein5ZAIMXzLXoRTT7Pjp3N4wMYAFq11T1uToCvZC5XfUtWMHYMDu6MnbpCk5D7efR4M8oZCvSLn2F7QP0OD04NRzkqHKTwCL2IIUPXDoaJBiA2ArQJBxKfjjIL'
+        },
+        data : data
+      };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+      return res.sendStatus(200);
+  })
+  .catch(function (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  });
+  console.log("Sale:::")
+  });
 
 
 var listener = app.listen(process.env.PORT, function () {
