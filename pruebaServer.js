@@ -19,39 +19,6 @@ app.get(`/`, (req, res) => {
 
 app.get("/test", function (request, response) {
   // console.log("entra a la barra /test")
-  console.log("Entra:::")
-var data = JSON.stringify({
-      "messaging_product": "whatsapp",
-      "to": "523515194726",
-      "type": "template",
-      "template": {
-        "name": "hello_world",
-        "language": {
-          "code": "en_US"
-        }
-      }
-    });
-    
-    var config = {
-      method: 'post',
-      url: 'https://graph.facebook.com/v17.0/125943953940927/messages',
-      headers: { 
-        'Content-Type': 'application/json', 
-        'Authorization': 'Bearer EAAMCICOkXOQBO6nKOpJHoXDOFtrzaAZC6H2lBVR97tqtVOthYVP1Kw5wHtZBODoX7QEW4vwcVuoP81R64Jeein5ZAIMXzLXoRTT7Pjp3N4wMYAFq11T1uToCvZC5XfUtWMHYMDu6MnbpCk5D7efR4M8oZCvSLn2F7QP0OD04NRzkqHKTwCL2IIUPXDoaJBiA2ArQJBxKfjjIL'
-      },
-      data : data
-    };
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-      res.sendStatus(200);
-})
-.catch(function (error) {
-  console.log(error);
-      res.sendStatus(400);
-});
-console.log("Sale:::")
   response.send('Prueba Local WhatsApp Webhook ');
 });
 
@@ -141,11 +108,11 @@ var data = JSON.stringify({
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
-      res.sendStatus(200);
+    return res.sendStatus(200);
 })
 .catch(function (error) {
   console.log(error);
-      res.sendStatus(400);
+  return res.sendStatus(400);
 });
 console.log("Sale:::")
 });
