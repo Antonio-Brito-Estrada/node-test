@@ -121,7 +121,7 @@ console.log("Sale:::")
 // prueba enviar mensaje
 app.post('/sendMessage', function(req, res) {
   console.log("Entra:::", req)
-  var data = req;
+  var data = req.body;
       
       var config = {
         method: 'post',
