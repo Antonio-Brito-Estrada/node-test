@@ -120,8 +120,8 @@ console.log("Sale:::")
 
 // prueba enviar mensaje
 app.post('/sendMessage', function(req, res) {
-  console.log("Entra:::")
-  var data = JSON.stringify(req);
+  console.log("Entra:::", req)
+  var data = req;
       
       var config = {
         method: 'post',
