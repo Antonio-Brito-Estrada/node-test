@@ -3,6 +3,7 @@ var express = require('express')
     ,bodyParser = require('body-parser');
     const cors = require("cors");
     const { config } = require('dotenv');
+    var axios = require('axios');
 
 config()
     // npm install dotenv  para la variable de entorno
@@ -77,6 +78,46 @@ app.post("/webhook", function (request, response) {
   // console.log('Incoming webhook: ' + JSON.stringify(request.body));
   response.sendStatus(200);
 });
+
+
+// prueba enviar mensaje
+app.get('/enviarMensaje', function(req, res) {
+console.log("Entra:::")
+var data = JSON.stringify({
+      "messaging_product": "whatsapp",
+      "to": "523515194726",
+      "type": "template",
+      "template": {
+        "name": "hello_world",
+        "language": {
+          "code": "en_US"
+        }
+      }
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'https://graph.facebook.com/v17.0/125943953940927/messages',
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Authorization': 'Bearer EAAMCICOkXOQBO6nKOpJHoXDOFtrzaAZC6H2lBVR97tqtVOthYVP1Kw5wHtZBODoX7QEW4vwcVuoP81R64Jeein5ZAIMXzLXoRTT7Pjp3N4wMYAFq11T1uToCvZC5XfUtWMHYMDu6MnbpCk5D7efR4M8oZCvSLn2F7QP0OD04NRzkqHKTwCL2IIUPXDoaJBiA2ArQJBxKfjjIL'
+      },
+      data : data
+    };
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+      res.sendStatus(200);
+})
+.catch(function (error) {
+  console.log(error);
+      res.sendStatus(400);
+});
+console.log("Sale:::")
+});
+
+
 
 var listener = app.listen(process.env.PORT, function () {
   console.log('tu app esta corriendo en el puerto: ' + listener.address().port);
