@@ -3,7 +3,7 @@ var express = require('express')
     ,bodyParser = require('body-parser');
     const cors = require("cors");
     const { config } = require('dotenv');
-    var axios = require('axios');
+    const axios = require('axios');
 
 config()
     // npm install dotenv  para la variable de entorno
