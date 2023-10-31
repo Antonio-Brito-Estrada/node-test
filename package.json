@@ -8,11 +8,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "axios": "^1.6.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "crypto-js": "^3.3.0",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^6.9.6",
+    "resend": "^1.1.0",
+    "save": "^2.9.0"
   },
   "engines": {
     "node": "6.10.x"
